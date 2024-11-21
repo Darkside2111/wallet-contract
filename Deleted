@@ -1,0 +1,18 @@
+public static void getRootedTreeHelper(Node n, boolean[] marked, String spacing){
+
+  system.out.println(spacing + "in helper with " + n.getaid());
+  marked[n.getid()] = true;
+  if(n.childeren.isEmpty())
+      return;
+   else{
+      for(Node child : n.childeren){
+        if(marked[child.getid()])
+          continue;  // ConcurrentModificationException is thrown here.
+        else{
+            n.addChild(child);
+            spacing = spacing + "\t";
+            getRootedTreeHelper(child, marked, spacing);
+        }
+      }
+    }
+  }
